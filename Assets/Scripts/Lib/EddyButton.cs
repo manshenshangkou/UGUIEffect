@@ -7,26 +7,22 @@ using UnityEngine.UI;
 
 public class EddyButton : Button
 {
-    public ButtonEnterEvent PointerEnter { get; set; } = new ButtonEnterEvent();
-    public ButtonExitEvent PointerExit { get; set; } = new ButtonExitEvent();
+    public UGUIEnterEvent PointerEnter { get; set; } = new UGUIEnterEvent();
+    public UGUIExitEvent PointerExit { get; set; } = new UGUIExitEvent();
 
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
         base.OnPointerEnter(eventData);
         PointerEnter?.Invoke();
-
-
-
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
         base.OnPointerExit(eventData);
         PointerExit?.Invoke();
-
     }
 }
 
-public class ButtonEnterEvent: UnityEvent { }
-public class ButtonExitEvent : UnityEvent { }
+public class UGUIEnterEvent: UnityEvent { }
+public class UGUIExitEvent : UnityEvent { }
