@@ -9,6 +9,8 @@ public class EddyButton : Button
 {
     public UGUIEnterEvent PointerEnter { get; set; } = new UGUIEnterEvent();
     public UGUIExitEvent PointerExit { get; set; } = new UGUIExitEvent();
+    public UGUIDownEvent PointerDown { get; set; } = new UGUIDownEvent();
+    public UGUIUpEvent PointerUp { get; set; } = new UGUIUpEvent();
 
 
     public override void OnPointerEnter(PointerEventData eventData)
@@ -22,7 +24,20 @@ public class EddyButton : Button
         base.OnPointerExit(eventData);
         PointerExit?.Invoke();
     }
+    public override void OnPointerDown(PointerEventData eventData)
+    {
+        base.OnPointerDown(eventData);
+        PointerDown?.Invoke();
+    }
+
+    public override void OnPointerUp(PointerEventData eventData)
+    {
+        base.OnPointerUp(eventData);
+        PointerUp?.Invoke();
+    }
 }
 
 public class UGUIEnterEvent: UnityEvent { }
 public class UGUIExitEvent : UnityEvent { }
+public class UGUIDownEvent : UnityEvent { }
+public class UGUIUpEvent : UnityEvent { }
