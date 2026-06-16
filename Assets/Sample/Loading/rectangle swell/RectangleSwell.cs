@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 
 public class RectangleSwell : MonoBehaviour
@@ -20,6 +21,7 @@ public class RectangleSwell : MonoBehaviour
             Transform tran = Rectangles[i];
             Sequence sq = DOTween.Sequence();
             sq.Append(tran.DOScale(SwellCoe, DurationTime).SetEase(ease).SetLoops(2, LoopType.Yoyo));
+            sq.Insert(0, tran.GetComponent<Image>().DOColor(Color.green, DurationTime).SetEase(ease).SetLoops(2, LoopType.Yoyo));
             sq.Append(CDoTween.Common.delayCall(StayTime, null));
             sq.SetLoops(-1);
             sq.Pause();
